@@ -1,0 +1,12 @@
+'zh-CN':
+  social_share_button:
+    share_to: 分享到 %{name}
+    twitter: Twitter
+    facebook: Facebook
+    google_plus: Google+
+    google_bookmark: Google 收藏
+    tumblr: Tumblr
+    pinterest: Pinterest
+    email: Email
+    linkedin: Linkedin
+
