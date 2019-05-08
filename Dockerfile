@@ -8,4 +8,4 @@ COPY . .
 
 RUN bundle install
 
-CMD ["rake", "db:setup"]
+CMD ["rake", "db:migrate"]
