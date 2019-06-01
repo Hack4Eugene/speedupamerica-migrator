@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171107091550) do
+ActiveRecord::Schema.define(version: 20190526013200) do
 
   create_table "census_boundaries", force: :cascade do |t|
     t.string   "name",            limit: 255
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20171107091550) do
     t.string   "geo_id",          limit: 255
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
+    t.string   "geom_type",       limit: 255
   end
 
   create_table "provider_statistics", force: :cascade do |t|
@@ -70,16 +71,18 @@ ActiveRecord::Schema.define(version: 20171107091550) do
     t.boolean  "from_mlab",                                                default: false
     t.string   "area_code",           limit: 15
     t.string   "test_type",           limit: 15,                           default: "both"
-    t.integer  "census_code",         limit: 4
+    t.string   "census_code",         limit: 255
     t.float    "upload_median",       limit: 24
     t.float    "download_median",     limit: 24
     t.string   "census_status",       limit: 10
+    t.date     "test_date",                                                                 null: false
   end
 
   add_index "submissions", ["actual_down_speed"], name: "index_submissions_on_actual_down_speed", using: :btree
   add_index "submissions", ["census_status"], name: "index_submissions_on_census_status", using: :btree
   add_index "submissions", ["provider"], name: "index_submissions_on_provider", using: :btree
   add_index "submissions", ["rating"], name: "index_submissions_on_rating", using: :btree
+  add_index "submissions", ["test_date", "ip_address", "test_type"], name: "index_submissions_on_test_date_and_ip_address_and_test_type", using: :btree
   add_index "submissions", ["test_id"], name: "index_submissions_on_test_id", using: :btree
   add_index "submissions", ["test_type"], name: "index_submissions_on_test_type", using: :btree
   add_index "submissions", ["testing_for"], name: "index_submissions_on_testing_for", using: :btree
