@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190526013200) do
+ActiveRecord::Schema.define(version: 20190602232500) do
 
   create_table "census_boundaries", force: :cascade do |t|
     t.string   "name",            limit: 255
@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(version: 20190526013200) do
 
   add_index "submissions", ["actual_down_speed"], name: "index_submissions_on_actual_down_speed", using: :btree
   add_index "submissions", ["census_status"], name: "index_submissions_on_census_status", using: :btree
+  add_index "submissions", ["provider", "test_date", "test_type"], name: "index_submissions_on_provider_and_test_date_and_test_type", using: :btree
   add_index "submissions", ["provider"], name: "index_submissions_on_provider", using: :btree
   add_index "submissions", ["rating"], name: "index_submissions_on_rating", using: :btree
   add_index "submissions", ["test_date", "ip_address", "test_type"], name: "index_submissions_on_test_date_and_ip_address_and_test_type", using: :btree
