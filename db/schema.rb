@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190602232500) do
+ActiveRecord::Schema.define(version: 20190707070900) do
 
   create_table "census_boundaries", force: :cascade do |t|
     t.string   "name",            limit: 255
@@ -24,17 +24,17 @@ ActiveRecord::Schema.define(version: 20190602232500) do
   end
 
   create_table "provider_statistics", force: :cascade do |t|
-    t.string   "name",                       limit: 50,                                           null: false
-    t.integer  "applications",               limit: 4,                           default: 0,      null: false
-    t.float    "rating",                     limit: 24,                          default: 0.0,    null: false
-    t.decimal  "advertised_to_actual_ratio",            precision: 5,  scale: 2, default: 0.0,    null: false
-    t.decimal  "average_price",                         precision: 10, scale: 2, default: 0.0,    null: false
-    t.string   "provider_type",              limit: 20,                          default: "both", null: false
-    t.datetime "created_at",                                                                      null: false
-    t.datetime "updated_at",                                                                      null: false
-    t.decimal  "actual_speed_sum",                      precision: 60, scale: 2, default: 0.0,    null: false
-    t.decimal  "provider_speed_sum",                    precision: 60, scale: 2, default: 0.0,    null: false
-    t.boolean  "from_mlab",                                                      default: false
+    t.string   "name",                       limit: 255,                                           null: false
+    t.integer  "applications",               limit: 4,                            default: 0,      null: false
+    t.float    "rating",                     limit: 24,                           default: 0.0,    null: false
+    t.decimal  "advertised_to_actual_ratio",             precision: 5,  scale: 2, default: 0.0,    null: false
+    t.decimal  "average_price",                          precision: 10, scale: 2, default: 0.0,    null: false
+    t.string   "provider_type",              limit: 20,                           default: "both", null: false
+    t.datetime "created_at",                                                                       null: false
+    t.datetime "updated_at",                                                                       null: false
+    t.decimal  "actual_speed_sum",                       precision: 60, scale: 2, default: 0.0,    null: false
+    t.decimal  "provider_speed_sum",                     precision: 60, scale: 2, default: 0.0,    null: false
+    t.boolean  "from_mlab",                                                       default: false
   end
 
   create_table "service_providers", force: :cascade do |t|
