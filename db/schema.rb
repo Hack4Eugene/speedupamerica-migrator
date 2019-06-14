@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190707070900) do
+ActiveRecord::Schema.define(version: 20190714031500) do
 
   create_table "census_boundaries", force: :cascade do |t|
     t.string   "name",            limit: 255
