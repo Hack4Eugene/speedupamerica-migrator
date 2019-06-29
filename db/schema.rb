@@ -11,15 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190714031500) do
+ActiveRecord::Schema.define(version: 20190723184600) do
 
   create_table "census_boundaries", force: :cascade do |t|
     t.string   "name",            limit: 255
     t.integer  "area_identifier", limit: 4
-    t.text     "bounds",          limit: 65535
+    t.text     "bounds",          limit: 4294967295
     t.string   "geo_id",          limit: 255
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
     t.string   "geom_type",       limit: 255
   end
 
@@ -44,6 +44,27 @@ ActiveRecord::Schema.define(version: 20190714031500) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
     t.string   "short_name", limit: 255
+  end
+
+  create_table "stats_cache", id: false, force: :cascade do |t|
+    t.string   "boundary_type",       limit: 255, null: false
+    t.string   "boundary_id",         limit: 255, null: false
+    t.string   "date_type",           limit: 255, null: false
+    t.date     "date_value",                      null: false
+    t.float    "all_avg_upload",      limit: 24,  null: false
+    t.float    "all_median_upload",   limit: 24,  null: false
+    t.integer  "all_count_upload",    limit: 4,   null: false
+    t.float    "all_avg_download",    limit: 24,  null: false
+    t.float    "all_median_download", limit: 24,  null: false
+    t.integer  "all_count_download",  limit: 4,   null: false
+    t.float    "sua_avg_upload",      limit: 24,  null: false
+    t.float    "sua_median_upload",   limit: 24,  null: false
+    t.integer  "sua_count_upload",    limit: 4,   null: false
+    t.float    "sua_avg_download",    limit: 24,  null: false
+    t.float    "sua_median_download", limit: 24,  null: false
+    t.integer  "sua_count_download",  limit: 4,   null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
   end
 
   create_table "submissions", force: :cascade do |t|
@@ -76,10 +97,15 @@ ActiveRecord::Schema.define(version: 20190714031500) do
     t.float    "download_median",     limit: 24
     t.string   "census_status",       limit: 10
     t.date     "test_date",                                                                 null: false
+    t.string   "country_code",        limit: 255
+    t.string   "region",              limit: 255
+    t.string   "county",              limit: 255
+    t.integer  "accuracy",            limit: 4
   end
 
   add_index "submissions", ["actual_down_speed"], name: "index_submissions_on_actual_down_speed", using: :btree
   add_index "submissions", ["census_status"], name: "index_submissions_on_census_status", using: :btree
+  add_index "submissions", ["country_code", "region", "test_type"], name: "index_submissions_on_country_code_and_region_and_test_type", using: :btree
   add_index "submissions", ["provider", "test_date", "test_type"], name: "index_submissions_on_provider_and_test_date_and_test_type", using: :btree
   add_index "submissions", ["provider"], name: "index_submissions_on_provider", using: :btree
   add_index "submissions", ["rating"], name: "index_submissions_on_rating", using: :btree
