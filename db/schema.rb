@@ -11,15 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190714031500) do
+ActiveRecord::Schema.define(version: 20190723184600) do
 
   create_table "census_boundaries", force: :cascade do |t|
     t.string   "name",            limit: 255
     t.integer  "area_identifier", limit: 4
-    t.text     "bounds",          limit: 65535
+    t.text     "bounds",          limit: 4294967295
     t.string   "geo_id",          limit: 255
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
     t.string   "geom_type",       limit: 255
   end
 
