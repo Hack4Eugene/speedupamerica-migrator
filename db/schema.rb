@@ -46,6 +46,61 @@ ActiveRecord::Schema.define(version: 20190723184600) do
     t.string   "short_name", limit: 255
   end
 
+  create_table "stats_caches", id: false, force: :cascade do |t|
+    t.string   "stat_type",                limit: 255, null: false
+    t.string   "stat_id",                  limit: 255, null: false
+    t.string   "date_type",                limit: 255, null: false
+    t.date     "date_value",                           null: false
+    t.float    "download_avg",             limit: 24,  null: false
+    t.float    "download_median",          limit: 24,  null: false
+    t.float    "download_max",             limit: 24,  null: false
+    t.integer  "download_count",           limit: 4,   null: false
+    t.float    "download_sua_avg",         limit: 24,  null: false
+    t.float    "download_sua_median",      limit: 24,  null: false
+    t.float    "download_sua_max",         limit: 24,  null: false
+    t.integer  "download_sua_count",       limit: 4,   null: false
+    t.float    "download_0_5",             limit: 24,  null: false
+    t.float    "download_6_10",            limit: 24,  null: false
+    t.float    "download_11_20",           limit: 24,  null: false
+    t.float    "download_21_40",           limit: 24,  null: false
+    t.float    "download_40_60",           limit: 24,  null: false
+    t.float    "download_61_80",           limit: 24,  null: false
+    t.float    "download_81_100",          limit: 24,  null: false
+    t.float    "download_101_250",         limit: 24,  null: false
+    t.float    "download_251_500",         limit: 24,  null: false
+    t.float    "download_500_1000",        limit: 24,  null: false
+    t.float    "download_1001",            limit: 24,  null: false
+    t.integer  "download_less_than_5",     limit: 4,   null: false
+    t.integer  "download_less_than_25",    limit: 4,   null: false
+    t.integer  "download_faster_than_100", limit: 4,   null: false
+    t.integer  "download_faster_than_250", limit: 4,   null: false
+    t.float    "upload_avg",               limit: 24,  null: false
+    t.float    "upload_median",            limit: 24,  null: false
+    t.float    "upload_max",               limit: 24,  null: false
+    t.integer  "upload_count",             limit: 4,   null: false
+    t.float    "upload_sua_avg",           limit: 24,  null: false
+    t.float    "upload_sua_median",        limit: 24,  null: false
+    t.float    "upload_sua_max",           limit: 24,  null: false
+    t.integer  "upload_sua_count",         limit: 4,   null: false
+    t.float    "upload_0_5",               limit: 24,  null: false
+    t.float    "upload_6_10",              limit: 24,  null: false
+    t.float    "upload_11_20",             limit: 24,  null: false
+    t.float    "upload_21_40",             limit: 24,  null: false
+    t.float    "upload_40_60",             limit: 24,  null: false
+    t.float    "upload_61_80",             limit: 24,  null: false
+    t.float    "upload_81_100",            limit: 24,  null: false
+    t.float    "upload_101_250",           limit: 24,  null: false
+    t.float    "upload_251_500",           limit: 24,  null: false
+    t.float    "upload_500_1000",          limit: 24,  null: false
+    t.float    "upload_1001",              limit: 24,  null: false
+    t.integer  "upload_less_than_5",       limit: 4,   null: false
+    t.integer  "upload_less_than_25",      limit: 4,   null: false
+    t.integer  "upload_faster_than_100",   limit: 4,   null: false
+    t.integer  "upload_faster_than_250",   limit: 4,   null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+  end
+
   create_table "submissions", force: :cascade do |t|
     t.string   "testing_for",         limit: 255
     t.string   "address",             limit: 250
@@ -83,6 +138,7 @@ ActiveRecord::Schema.define(version: 20190723184600) do
   end
 
   add_index "submissions", ["actual_down_speed"], name: "index_submissions_on_actual_down_speed", using: :btree
+  add_index "submissions", ["census_code"], name: "index_submissions_on_census_code", using: :btree
   add_index "submissions", ["census_status"], name: "index_submissions_on_census_status", using: :btree
   add_index "submissions", ["country_code", "region", "test_type"], name: "index_submissions_on_country_code_and_region_and_test_type", using: :btree
   add_index "submissions", ["provider", "test_date", "test_type"], name: "index_submissions_on_provider_and_test_date_and_test_type", using: :btree
