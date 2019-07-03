@@ -16,17 +16,17 @@ class AddStatsCacheTable < ActiveRecord::Migration
       t.float :download_sua_max, null:false
       t.integer :download_sua_count, null:false
 
-      t.integer :download_0_5, null:false
-      t.integer :download_6_10, null:false
-      t.integer :download_11_20, null:false
-      t.integer :download_21_40, null:false
-      t.integer :download_40_60, null:false
-      t.integer :download_61_80, null:false
-      t.integer :download_81_100, null:false
-      t.integer :download_101_250, null:false
-      t.integer :download_251_500, null:false
-      t.integer :download_500_1000, null:false
-      t.integer :download_1001, null:false
+      t.float :download_0_5, null:false
+      t.float :download_6_10, null:false
+      t.float :download_11_20, null:false
+      t.float :download_21_40, null:false
+      t.float :download_40_60, null:false
+      t.float :download_61_80, null:false
+      t.float :download_81_100, null:false
+      t.float :download_101_250, null:false
+      t.float :download_251_500, null:false
+      t.float :download_500_1000, null:false
+      t.float :download_1001, null:false
 
       t.integer :download_less_than_5, null:false
       t.integer :download_less_than_25, null:false
@@ -43,17 +43,17 @@ class AddStatsCacheTable < ActiveRecord::Migration
       t.float :upload_sua_max, null:false
       t.integer :upload_sua_count, null:false
 
-      t.integer :upload_0_5, null:false
-      t.integer :upload_6_10, null:false
-      t.integer :upload_11_20, null:false
-      t.integer :upload_21_40, null:false
-      t.integer :upload_40_60, null:false
-      t.integer :upload_61_80, null:false
-      t.integer :upload_81_100, null:false
-      t.integer :upload_101_250, null:false
-      t.integer :upload_251_500, null:false
-      t.integer :upload_500_1000, null:false
-      t.integer :upload_1001, null:false
+      t.float :upload_0_5, null:false
+      t.float :upload_6_10, null:false
+      t.float :upload_11_20, null:false
+      t.float :upload_21_40, null:false
+      t.float :upload_40_60, null:false
+      t.float :upload_61_80, null:false
+      t.float :upload_81_100, null:false
+      t.float :upload_101_250, null:false
+      t.float :upload_251_500, null:false
+      t.float :upload_500_1000, null:false
+      t.float :upload_1001, null:false
 
       t.integer :upload_less_than_5, null:false
       t.integer :upload_less_than_25, null:false

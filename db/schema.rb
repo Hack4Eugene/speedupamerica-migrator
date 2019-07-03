@@ -59,17 +59,17 @@ ActiveRecord::Schema.define(version: 20190723184600) do
     t.float    "download_sua_median",      limit: 24,  null: false
     t.float    "download_sua_max",         limit: 24,  null: false
     t.integer  "download_sua_count",       limit: 4,   null: false
-    t.integer  "download_0_5",             limit: 4,   null: false
-    t.integer  "download_6_10",            limit: 4,   null: false
-    t.integer  "download_11_20",           limit: 4,   null: false
-    t.integer  "download_21_40",           limit: 4,   null: false
-    t.integer  "download_40_60",           limit: 4,   null: false
-    t.integer  "download_61_80",           limit: 4,   null: false
-    t.integer  "download_81_100",          limit: 4,   null: false
-    t.integer  "download_101_250",         limit: 4,   null: false
-    t.integer  "download_251_500",         limit: 4,   null: false
-    t.integer  "download_500_1000",        limit: 4,   null: false
-    t.integer  "download_1001",            limit: 4,   null: false
+    t.float    "download_0_5",             limit: 24,  null: false
+    t.float    "download_6_10",            limit: 24,  null: false
+    t.float    "download_11_20",           limit: 24,  null: false
+    t.float    "download_21_40",           limit: 24,  null: false
+    t.float    "download_40_60",           limit: 24,  null: false
+    t.float    "download_61_80",           limit: 24,  null: false
+    t.float    "download_81_100",          limit: 24,  null: false
+    t.float    "download_101_250",         limit: 24,  null: false
+    t.float    "download_251_500",         limit: 24,  null: false
+    t.float    "download_500_1000",        limit: 24,  null: false
+    t.float    "download_1001",            limit: 24,  null: false
     t.integer  "download_less_than_5",     limit: 4,   null: false
     t.integer  "download_less_than_25",    limit: 4,   null: false
     t.integer  "download_faster_than_100", limit: 4,   null: false
@@ -82,17 +82,17 @@ ActiveRecord::Schema.define(version: 20190723184600) do
     t.float    "upload_sua_median",        limit: 24,  null: false
     t.float    "upload_sua_max",           limit: 24,  null: false
     t.integer  "upload_sua_count",         limit: 4,   null: false
-    t.integer  "upload_0_5",               limit: 4,   null: false
-    t.integer  "upload_6_10",              limit: 4,   null: false
-    t.integer  "upload_11_20",             limit: 4,   null: false
-    t.integer  "upload_21_40",             limit: 4,   null: false
-    t.integer  "upload_40_60",             limit: 4,   null: false
-    t.integer  "upload_61_80",             limit: 4,   null: false
-    t.integer  "upload_81_100",            limit: 4,   null: false
-    t.integer  "upload_101_250",           limit: 4,   null: false
-    t.integer  "upload_251_500",           limit: 4,   null: false
-    t.integer  "upload_500_1000",          limit: 4,   null: false
-    t.integer  "upload_1001",              limit: 4,   null: false
+    t.float    "upload_0_5",               limit: 24,  null: false
+    t.float    "upload_6_10",              limit: 24,  null: false
+    t.float    "upload_11_20",             limit: 24,  null: false
+    t.float    "upload_21_40",             limit: 24,  null: false
+    t.float    "upload_40_60",             limit: 24,  null: false
+    t.float    "upload_61_80",             limit: 24,  null: false
+    t.float    "upload_81_100",            limit: 24,  null: false
+    t.float    "upload_101_250",           limit: 24,  null: false
+    t.float    "upload_251_500",           limit: 24,  null: false
+    t.float    "upload_500_1000",          limit: 24,  null: false
+    t.float    "upload_1001",              limit: 24,  null: false
     t.integer  "upload_less_than_5",       limit: 4,   null: false
     t.integer  "upload_less_than_25",      limit: 4,   null: false
     t.integer  "upload_faster_than_100",   limit: 4,   null: false
