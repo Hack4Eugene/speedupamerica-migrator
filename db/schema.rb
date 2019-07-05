@@ -138,16 +138,19 @@ ActiveRecord::Schema.define(version: 20190723184600) do
   end
 
   add_index "submissions", ["actual_down_speed"], name: "index_submissions_on_actual_down_speed", using: :btree
+  add_index "submissions", ["census_code", "test_type", "test_date"], name: "index_submissions_on_census_code_and_test_type_and_test_date", using: :btree
   add_index "submissions", ["census_code"], name: "index_submissions_on_census_code", using: :btree
   add_index "submissions", ["census_status"], name: "index_submissions_on_census_status", using: :btree
   add_index "submissions", ["country_code", "region", "test_type"], name: "index_submissions_on_country_code_and_region_and_test_type", using: :btree
   add_index "submissions", ["provider", "test_date", "test_type"], name: "index_submissions_on_provider_and_test_date_and_test_type", using: :btree
+  add_index "submissions", ["provider", "test_type", "test_date"], name: "index_submissions_on_provider_and_test_type_and_test_date", using: :btree
   add_index "submissions", ["provider"], name: "index_submissions_on_provider", using: :btree
   add_index "submissions", ["rating"], name: "index_submissions_on_rating", using: :btree
   add_index "submissions", ["test_date", "ip_address", "test_type"], name: "index_submissions_on_test_date_and_ip_address_and_test_type", using: :btree
   add_index "submissions", ["test_id"], name: "index_submissions_on_test_id", using: :btree
   add_index "submissions", ["test_type"], name: "index_submissions_on_test_type", using: :btree
   add_index "submissions", ["testing_for"], name: "index_submissions_on_testing_for", using: :btree
+  add_index "submissions", ["zip_code", "test_type", "test_date"], name: "index_submissions_on_zip_code_and_test_type_and_test_date", using: :btree
   add_index "submissions", ["zip_code"], name: "index_submissions_on_zip_code", using: :btree
 
   create_table "zip_boundaries", force: :cascade do |t|
