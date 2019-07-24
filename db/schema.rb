@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190723184600) do
+ActiveRecord::Schema.define(version: 20190724120100) do
+
+# Could not dump table "boundaries" because of following StandardError
+#   Unknown type 'geometry' for column 'geometry'
 
   create_table "census_boundaries", force: :cascade do |t|
     t.string   "name",            limit: 255
@@ -135,6 +138,8 @@ ActiveRecord::Schema.define(version: 20190723184600) do
     t.string   "region",              limit: 255
     t.string   "county",              limit: 255
     t.integer  "accuracy",            limit: 4
+    t.integer  "location",            limit: 4
+    t.string   "census_block",        limit: 255
   end
 
   add_index "submissions", ["actual_down_speed"], name: "index_submissions_on_actual_down_speed", using: :btree
