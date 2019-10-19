@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190925182200) do
+ActiveRecord::Schema.define(version: 20191019160900) do
 
 # Could not dump table "boundaries" because of following StandardError
 #   Unknown type 'geometry' for column 'geometry'
@@ -143,6 +143,7 @@ ActiveRecord::Schema.define(version: 20190925182200) do
   end
 
   add_index "submissions", ["actual_down_speed"], name: "index_submissions_on_actual_down_speed", using: :btree
+  add_index "submissions", ["census_block", "test_type", "test_date"], name: "index_submissions_on_census_block_and_test_type_and_test_date", using: :btree
   add_index "submissions", ["census_code", "test_type", "test_date"], name: "index_submissions_on_census_code_and_test_type_and_test_date", using: :btree
   add_index "submissions", ["census_code"], name: "index_submissions_on_census_code", using: :btree
   add_index "submissions", ["census_status"], name: "index_submissions_on_census_status", using: :btree
