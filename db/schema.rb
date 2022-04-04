@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191020171800) do
+ActiveRecord::Schema.define(version: 20220330011500) do
 
 # Could not dump table "boundaries" because of following StandardError
 #   Unknown type 'geometry' for column 'geometry'
@@ -38,6 +38,101 @@ ActiveRecord::Schema.define(version: 20191020171800) do
     t.decimal  "actual_speed_sum",                       precision: 60, scale: 2, default: 0.0,    null: false
     t.decimal  "provider_speed_sum",                     precision: 60, scale: 2, default: 0.0,    null: false
     t.boolean  "from_mlab",                                                       default: false
+  end
+
+  create_table "region_stats_caches", id: false, force: :cascade do |t|
+    t.string   "stat_type",                limit: 255, null: false
+    t.string   "stat_id",                  limit: 255, null: false
+    t.string   "date_type",                limit: 255, null: false
+    t.date     "date_value",                           null: false
+    t.float    "download_avg",             limit: 24,  null: false
+    t.float    "download_median",          limit: 24,  null: false
+    t.float    "download_max",             limit: 24,  null: false
+    t.integer  "download_count",           limit: 4,   null: false
+    t.float    "download_sua_avg",         limit: 24,  null: false
+    t.float    "download_sua_median",      limit: 24,  null: false
+    t.float    "download_sua_max",         limit: 24,  null: false
+    t.integer  "download_sua_count",       limit: 4,   null: false
+    t.float    "download_0_5",             limit: 24,  null: false
+    t.float    "download_6_10",            limit: 24,  null: false
+    t.float    "download_11_20",           limit: 24,  null: false
+    t.float    "download_21_40",           limit: 24,  null: false
+    t.float    "download_40_60",           limit: 24,  null: false
+    t.float    "download_61_80",           limit: 24,  null: false
+    t.float    "download_81_100",          limit: 24,  null: false
+    t.float    "download_101_250",         limit: 24,  null: false
+    t.float    "download_251_500",         limit: 24,  null: false
+    t.float    "download_500_1000",        limit: 24,  null: false
+    t.float    "download_1001",            limit: 24,  null: false
+    t.integer  "download_less_than_5",     limit: 4,   null: false
+    t.integer  "download_less_than_25",    limit: 4,   null: false
+    t.integer  "download_faster_than_100", limit: 4,   null: false
+    t.integer  "download_faster_than_250", limit: 4,   null: false
+    t.float    "upload_avg",               limit: 24,  null: false
+    t.float    "upload_median",            limit: 24,  null: false
+    t.float    "upload_max",               limit: 24,  null: false
+    t.integer  "upload_count",             limit: 4,   null: false
+    t.float    "upload_sua_avg",           limit: 24,  null: false
+    t.float    "upload_sua_median",        limit: 24,  null: false
+    t.float    "upload_sua_max",           limit: 24,  null: false
+    t.integer  "upload_sua_count",         limit: 4,   null: false
+    t.float    "upload_0_5",               limit: 24,  null: false
+    t.float    "upload_6_10",              limit: 24,  null: false
+    t.float    "upload_11_20",             limit: 24,  null: false
+    t.float    "upload_21_40",             limit: 24,  null: false
+    t.float    "upload_40_60",             limit: 24,  null: false
+    t.float    "upload_61_80",             limit: 24,  null: false
+    t.float    "upload_81_100",            limit: 24,  null: false
+    t.float    "upload_101_250",           limit: 24,  null: false
+    t.float    "upload_251_500",           limit: 24,  null: false
+    t.float    "upload_500_1000",          limit: 24,  null: false
+    t.float    "upload_1001",              limit: 24,  null: false
+    t.integer  "upload_less_than_5",       limit: 4,   null: false
+    t.integer  "upload_less_than_25",      limit: 4,   null: false
+    t.integer  "upload_faster_than_100",   limit: 4,   null: false
+    t.integer  "upload_faster_than_250",   limit: 4,   null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+  end
+
+  create_table "region_submissions", force: :cascade do |t|
+    t.string   "testing_for",         limit: 255,                                           null: false
+    t.string   "address",             limit: 250,                                           null: false
+    t.string   "zip_code",            limit: 10
+    t.string   "provider",            limit: 255,                                           null: false
+    t.string   "connected_with",      limit: 255,                                           null: false
+    t.float    "monthly_price",       limit: 24,                                            null: false
+    t.float    "provider_down_speed", limit: 24,                                            null: false
+    t.decimal  "provider_price",                  precision: 15, scale: 2,                  null: false
+    t.float    "actual_down_speed",   limit: 24,                                            null: false
+    t.decimal  "actual_price",                    precision: 15, scale: 2,                  null: false
+    t.integer  "rating",              limit: 4,                                             null: false
+    t.boolean  "completed",                                                default: false
+    t.datetime "created_at",                                                                null: false
+    t.datetime "updated_at",                                                                null: false
+    t.decimal  "latitude",                        precision: 7,  scale: 4,                  null: false
+    t.decimal  "longitude",                       precision: 7,  scale: 4,                  null: false
+    t.integer  "ping",                limit: 4,                                             null: false
+    t.float    "actual_upload_speed", limit: 24,                           default: 0.0
+    t.string   "test_id",             limit: 140,                                           null: false
+    t.string   "ip_address",          limit: 60,                                            null: false
+    t.string   "hostname",            limit: 255,                                           null: false
+    t.boolean  "from_mlab",                                                default: false
+    t.string   "area_code",           limit: 15,                                            null: false
+    t.string   "test_type",           limit: 15,                           default: "both"
+    t.string   "census_code",         limit: 255,                                           null: false
+    t.float    "upload_median",       limit: 24,                                            null: false
+    t.float    "download_median",     limit: 24,                                            null: false
+    t.string   "census_status",       limit: 10,                                            null: false
+    t.date     "test_date",                                                                 null: false
+    t.string   "country_code",        limit: 255,                                           null: false
+    t.string   "region",              limit: 255,                                           null: false
+    t.string   "county",              limit: 255,                                           null: false
+    t.integer  "accuracy",            limit: 4,                                             null: false
+    t.integer  "location",            limit: 4,                                             null: false
+    t.string   "census_block",        limit: 255,                                           null: false
+    t.string   "access",              limit: 255
+    t.string   "whynoaccess",         limit: 255
   end
 
   create_table "service_providers", force: :cascade do |t|
